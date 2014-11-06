@@ -20,7 +20,7 @@ class DynamicTracer < Sinatra::Base
       h = JSON.parse(resp)
       JSON.pretty_generate(h)
     rescue => e
-      e.inspect
+      e.message
     end
   end
 end
