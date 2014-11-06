@@ -1,36 +1,39 @@
 %form.form-horizontal#dynamic-tracer
-  %fieldset
-    .control-group
-      %label.control-label{'for' => 'select-env'} Select Environment
-      .controls
-        %input{'type' => 'text', 'id' => 'environment', 'placeholder' => 'Select Environment', 'name' => 'environment', 'value' => @ws_config.host}
-    .control-group
-      %label.control-label{'for' => 'select-service'} Select Service
-      .controls
-        %select{'id' => 'service', 'name' => 'service'}
-          - @ws_config.services.each do |service|
-            %option{'value' => service[:name], 'data-port' => service[:port]}= service[:name]
-    .control-group
-      %label.control-label{'for' => 'select-op'} Select Op
-      .controls
-        %select{'id' => 'op', 'name' => 'op'}
-          - @ws_config.ops.each do |op|
-            %option= op
-    .control-group
-      %label.control-label{'for' => 'enter-expression'} Expression
-      .controls
-        %input{'id' => 'expression', 'name' => 'expression', 'placeholder' => 'Enter Expression'}
-    .control-group
-      .controls
-        %button.btn{'type' => 'submit'} Look up
+  .control-group
+    %label.control-label{'for' => 'select-env'} Select Environment
+    .controls
+      %input{'type' => 'text', 'id' => 'environment', 'placeholder' => 'Select Environment', 'name' => 'environment', 'value' => @ws_config.host}
+  .control-group
+    %label.control-label{'for' => 'select-service'} Select Service
+    .controls
+      %select{'id' => 'service', 'name' => 'service'}
+        - @ws_config.services.each do |service|
+          %option{'value' => service[:name], 'data-port' => service[:port]}= service[:name]
+  .control-group
+    %label.control-label{'for' => 'select-op'} Select Op
+    .controls
+      %select{'id' => 'op', 'name' => 'op'}
+        - @ws_config.ops.each do |op|
+          %option= op
+  .control-group
+    %label.control-label{'for' => 'enter-expression'} Expression to evaluate
+    .controls
+      %input{'type' => 'text', 'id' => 'expression', 'name' => 'expression', 'placeholder' => 'Enter Expression'}
+  .control-group
+    .controls
+      %button.btn{'type' => 'submit'} Generate URL
 
-%fieldset
-  %legend
-    -# #generated-url http://den-signoff03:8280/accountservice/get_account_by_id?uid=955
-    #generated-url
-    %button.btn#fetch-trace Fetch
+.row
+  .span12
+    .span10
+      %pre#generated-url
+    .span2
+      %button.btn.btn-success.disabled#fetch-trace Get Data
 
-#fieldset
-  %legend
-    %pre#response{'style' => 'width: 800px; height: 400px; background: #eee; font-family: Monospace; font-size: 12px; line-height: 12px; overflow-y: scroll; overflow-x: hidden, padding: 5px'}
-      Response comes here
+%p
+
+.row
+  .span12
+    %legend
+      %pre#response
+        Response comes here
