@@ -1,0 +1,152 @@
+# Specifies all necessary variables for a client to connect to a web service.
+#
+# Since values are often repeated across environments and services, this file
+# employs a convention to share values at different levels.
+#
+# A client-service relationship is defined by a set of variables, usually just host and port.
+# In order to determine the value of {variable name} for the {service name} service in the {environment name}
+# environment, the following resolution process is used (in decreasing order of precedence):
+#
+# (1) Fully-specified setting:              {environment name} -> {service name} -> {variable name}
+# (2) Environment-specific default setting: {environment name} -> default -> {variable name}
+# (3) Global service default setting:       default -> {service name} -> {variable name}
+# (4) Global default setting:               default -> default -> {variable name}
+default:
+  default:
+    host: localhost
+
+  classifier:
+    port: 8140
+
+  search:
+    port: 8220
+
+  pricing:
+    port: 8180
+
+  provider_directory:
+    port: 8160
+
+  guide_tool:
+    port: 8240
+
+  benefits:
+    port: 8260
+
+  account:
+    port: 8280
+
+  recommendations:
+    # Recommendations operations are mounted on the account service as a temporary measure,
+    # hence the 8280 port assignment
+    port: 8280
+
+  events:
+    # This is for page event tracking
+    port: 8460
+
+  configurator:
+    port: 8380
+
+  past_care:
+    port: 8420
+
+  rewards:
+    port: 8520
+
+  drug:
+    port: 8540
+
+  content:
+    port: 8560
+
+  providerdetail:
+    port: 8600
+
+  email:
+    port: 8640
+
+  reviews:
+    port: 8680
+
+  coe:
+    port: 8720
+
+  proxy:
+    port: 8300
+
+denqa01:
+  default:
+    host: 10.11.80.22
+
+denqa02:
+   default:
+     host: 10.11.80.25
+
+denqa04:
+  default:
+    host: 10.11.80.29
+
+phxdemo01:
+  default:
+    host: 10.21.30.23
+
+dentest01:
+  default:
+    host: den-test01-soa01
+
+dentest02:
+  default:
+    host: 10.11.40.26
+
+dentest03:
+  default:
+     host: 10.11.40.28
+
+dentest04:
+  default:
+     host: 10.11.40.31
+
+dentest05:
+  default:
+     host: 10.11.40.35
+
+dentest06:
+  default:
+     host: 10.11.40.36
+
+denpreprod:
+  default:
+    host: 10.11.224.64
+
+dfwprod:
+  default:
+    host: 10.1.11.250
+
+denprod:
+  default:
+    host: 10.11.224.47
+
+sfoqa03:
+  default:
+    host: 10.23.21.75
+
+sfoqa04:
+  default:
+    host: 10.23.23.102
+
+sandbox1:
+  default:
+    host: sfo-qa03-soa01
+
+sandbox4:
+  default:
+    host: sfo-qa03-soa01
+
+sandbox6:
+  default:
+    host: sfo-qa03-soa01
+  reviews:
+    host: localhost
+  configurator:
+    host: localhost

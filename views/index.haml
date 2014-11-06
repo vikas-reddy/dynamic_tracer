@@ -1,0 +1,21 @@
+%form.form-horizontal
+  %fieldset
+    .control-group
+      %label.control-label{'for' => 'select-env'} Select Environment
+      .controls
+        %select{'id' => 'select-env', 'name' => 'env'}
+          - @ws_config.environments.each do |env|
+            %option= env
+    .control-group
+      %label.control-label{'for' => 'select-service'} Select Service
+      .controls
+        %select{'id' => 'select-env', 'name' => 'env'}
+          - @ws_config.services.each do |service|
+            %option= service
+    .control-group
+      %label.control-label{'for' => 'select-op'} Select Op
+      .controls
+        %input{'type' => 'text', 'id' => 'select-op', 'placeholder' => 'Select Op'}
+    .control-group
+      .controls
+        %button.btn{'type' => 'submit'} Look up

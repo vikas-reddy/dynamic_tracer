@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %title Dynamic Tracer
+    %link{'rel' => 'stylesheet', 'type' => 'text/css', 'href' => '/bootstrap/css/bootstrap.css'}
+    %script{'src' => '/bootstrap/js/bootstrap.min.js'}
+  %body
+    .navbar.navbar-inverse
+      .navbar-inner
+        .container-fluid
+          %a.brand{'href' => '#'} Dynamic Tracer
+          %ul.nav
+            %li.active
+              %a Home
+    .container
+      .row-fluid
+        = yield
