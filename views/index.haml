@@ -1,21 +1,36 @@
-%form.form-horizontal
+%form.form-horizontal#dynamic-tracer
   %fieldset
     .control-group
       %label.control-label{'for' => 'select-env'} Select Environment
       .controls
-        %select{'id' => 'select-env', 'name' => 'env'}
-          - @ws_config.environments.each do |env|
-            %option= env
+        %input{'type' => 'text', 'id' => 'environment', 'placeholder' => 'Select Environment', 'name' => 'environment', 'value' => @ws_config.host}
     .control-group
       %label.control-label{'for' => 'select-service'} Select Service
       .controls
-        %select{'id' => 'select-env', 'name' => 'env'}
+        %select{'id' => 'service', 'name' => 'service'}
           - @ws_config.services.each do |service|
-            %option= service
+            %option{'value' => service[:name], 'data-port' => service[:port]}= service[:name]
     .control-group
       %label.control-label{'for' => 'select-op'} Select Op
       .controls
-        %input{'type' => 'text', 'id' => 'select-op', 'placeholder' => 'Select Op'}
+        %select{'id' => 'op', 'name' => 'op'}
+          - @ws_config.ops.each do |op|
+            %option= op
+    .control-group
+      %label.control-label{'for' => 'enter-expression'} Expression
+      .controls
+        %input{'id' => 'expression', 'name' => 'expression', 'placeholder' => 'Enter Expression'}
     .control-group
       .controls
         %button.btn{'type' => 'submit'} Look up
+
+%fieldset
+  %legend
+    -# #generated-url http://den-signoff03:8280/accountservice/get_account_by_id?uid=955
+    #generated-url
+    %button.btn#fetch-trace Fetch
+
+#fieldset
+  %legend
+    %pre#response{'style' => 'width: 800px; height: 400px; background: #eee; font-family: Monospace; font-size: 12px; line-height: 12px; overflow-y: scroll; overflow-x: hidden, padding: 5px'}
+      Response comes here

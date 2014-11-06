@@ -1,5 +1,7 @@
 require 'sinatra'
-require './models/ws_configuration.rb'
+require 'yaml'
+require 'json'
+require './models/soa_configuration.rb'
 
 class DynamicTracer < Sinatra::Base
   configure :development do
@@ -7,7 +9,18 @@ class DynamicTracer < Sinatra::Base
   end
 
   get '/' do
-    @ws_config = WsConfiguration.load('./config/web_services.yml', 'development')
-    haml :index, locals: {list: @list}
+    @ws_config = SoaConfiguration.build('config/web_services2.yml')
+    haml :index
+  end
+
+  get '/fetch-trace' do
+    begin
+      uri = URI(params['url'])
+      resp = Net::HTTP.get(uri)
+      h = JSON.parse(resp)
+      JSON.pretty_generate(h)
+    rescue => e
+      e.inspect
+    end
   end
 end

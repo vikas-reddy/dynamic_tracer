@@ -1,6 +1,6 @@
 host: localhost
 
-web_services:
+services:
   classifier:
     port: 8140
 
@@ -57,3 +57,9 @@ web_services:
 
   proxy:
     port: 8300
+
+ops:
+  evaluate_expression:
+  add_method_logger:
+  add_method_timer:
+  restore_class:
