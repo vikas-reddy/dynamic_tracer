@@ -1,34 +1,34 @@
-%form.form-horizontal#dynamic-tracer
-  .control-group
-    %label.control-label{'for' => 'select-env'} Select Environment
-    .controls
-      %input{'type' => 'text', 'id' => 'environment', 'placeholder' => 'Select Environment', 'name' => 'environment', 'value' => @ws_config.host}
-  .control-group
-    %label.control-label{'for' => 'select-service'} Select Service
-    .controls
-      %select{'id' => 'service', 'name' => 'service'}
+%form.form-horizontal#dynamic-tracer{'role' => 'form'}
+  .form-group
+    %label.control-label.col-sm-2{'for' => 'select-env'} Select Environment
+    .col-sm-4
+      %input.form-control{'type' => 'text', 'id' => 'environment', 'placeholder' => 'Select Environment', 'name' => 'environment', 'value' => @ws_config.host}
+  .form-group
+    %label.control-label.col-sm-2{'for' => 'select-service'} Select Service
+    .col-sm-4
+      %select.form-control{'id' => 'service', 'name' => 'service'}
         - @ws_config.services.each do |service|
           %option{'value' => service[:name], 'data-port' => service[:port]}= service[:name]
-  .control-group
-    %label.control-label{'for' => 'select-op'} Select Op
-    .controls
-      %select{'id' => 'op', 'name' => 'op'}
+  .form-group
+    %label.control-label.col-sm-2{'for' => 'select-op'} Select Op
+    .col-sm-4
+      %select.form-control{'id' => 'op', 'name' => 'op'}
         - @ws_config.ops.each do |op|
           %option= op
-  .control-group
-    %label.control-label{'for' => 'enter-expression'} Expression to evaluate
-    .controls
-      %input{'type' => 'text', 'id' => 'expression', 'name' => 'expression', 'placeholder' => 'Enter Expression'}
-  .control-group
-    .controls
+  .form-group
+    %label.control-label.col-sm-2{'for' => 'enter-expression'} Expression to evaluate
+    .col-sm-10
+      %input.form-control{'type' => 'text', 'id' => 'expression', 'name' => 'expression', 'placeholder' => 'Enter Expression'}
+  .form-group
+    .col-sm-2
+    .col-sm-4
       %button.btn{'type' => 'submit'} Generate URL
 
-.row
-  .span12
-    .span10
-      %pre#generated-url
-    .span2
-      %button.btn.btn-success.disabled#fetch-trace Get Data
+.container
+  .col-sm-8
+    %pre#generated-url
+  .col-sm-2
+    %button.btn.btn-success.disabled#fetch-trace Get Data
 
 %p
 
