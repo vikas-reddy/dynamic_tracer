@@ -1,4 +1,4 @@
-host: localhost
+host: den-dev-vm24
 
 services:
   classifier:
@@ -10,10 +10,10 @@ services:
   pricing:
     port: 8180
 
-  provider_directory:
+  providerdirectory:
     port: 8160
 
-  guide_tool:
+  guidetool:
     port: 8240
 
   benefits:
@@ -31,7 +31,7 @@ services:
   configurator:
     port: 8380
 
-  past_care:
+  pastcare:
     port: 8420
 
   rewards:
